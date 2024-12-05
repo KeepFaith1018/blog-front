@@ -1,0 +1,18 @@
+[data-theme='light'] {
+  --color-bg: #ffffff; // 白天模式背景色
+  --color-text: #000000; // 白天模式文字颜色
+  --color-text-muted: #666666; // 白天模式次要文字颜色
+  --color-border: #dddddd; // 白天模式边框颜色
+}
+[data-theme='dark'] {
+  --color-bg: #1e1e1e; // 暗黑模式背景色
+  --color-text: #e4e4e4; // 暗黑模式文字颜色
+  --color-text-muted: #a0a0a0; // 暗黑模式次要文字颜色
+  --color-border: #3a3a3a; // 暗黑模式边框颜色
+}
+
+/* 状态颜色 */
+$color-success: #28a745; // 成功状态颜色
+$color-error: #dc3545; // 错误状态颜色
+$color-warning: #ffc107; // 警告状态颜色
+$color-info: #17a2b8; // 信息状态颜色
