@@ -1,46 +1,11 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue'
 import HomeCard from '@/components/HomeCard.vue'
+import IconDown from '@/components/icons/home/IconDown.vue'
 import { useConfigStore } from '@/stores'
 const configStore = useConfigStore()
-import { ref } from 'vue'
-// TODO：打字机效果
-const content = ref('欢迎来到我的博客')
-// const data = ["欢迎来到我的博客", "我是 Faith", "一个前端开发者"];
-// let dataIndex = 0; // 当前文本的索引
-// let charIndex = 0; // 当前字符的索引
-// let isDeleting = false; // 是否处于删除状态
-// let timer;
-// const type = () => {
-//   const currentText = data[dataIndex]; // 当前文本
-//   if (!isDeleting) {
-//     content.value = currentText.slice(0, charIndex++);
-//     if (charIndex > currentText.length) {
-//       isDeleting = true; // 切换到删除阶段
-//       clearTimeout(timer);
-//       timer=setTimeout(type, 1000); // 停顿 1 秒后开始删除
-//       return;
-//     }
-//   } else {
-//     // 删除阶段
-//     content.value = currentText.slice(0, charIndex--);
-//     if (charIndex < 0) {
-//       isDeleting = false;
-//       dataIndex = (dataIndex + 1) % data.length;
-//       content.value = ''; // 清空内容，避免显示完整文本
-//       clearTimeout(timer)
-//       timer = setTimeout(type, 1000); // 停顿 0.5 秒后开始新文本
-//       return;
-//     }
-//   }
-//
-//   // 动态设置速度
-//   const speed = isDeleting ? 100 : 200; // 删除速度较快
-//   timer=setTimeout(type, speed);
-// };
-//
-// // 开始打字效果
-// type();
+import { useTypewriter } from '@/composables/useTypewriter'
+const typeContent = useTypewriter('欢迎来到我的博客').displayedText
 </script>
 <template>
   <div class="container" :data-theme="configStore.theme">
@@ -54,10 +19,12 @@ const content = ref('欢迎来到我的博客')
       <div class="site-info">
         <h1 class="site-title">Faith's Blog</h1>
         <div class="auto">
-          <span>{{ content }}</span>
+          <span>{{ typeContent }}</span>
         </div>
       </div>
-      <div class="site-scroll">向下翻页</div>
+      <div class="site-scroll">
+        <a><IconDown class="site-scroll-icon"></IconDown></a>
+      </div>
     </header>
     <main>
       <div class="left-aside">
@@ -65,15 +32,14 @@ const content = ref('欢迎来到我的博客')
       </div>
       <div class="right-aside">右边栏</div>
     </main>
-    <footer>底部</footer>
+    <footer></footer>
   </div>
 </template>
 <style lang="scss" scoped>
 .container {
   width: 100vw;
-  // background-color: var(--color-bg);
   color: var(--color-text);
-  // 侧边栏
+  background-color: var(--color-text-muted);
   .sidebar {
     position: fixed;
     right: 0;
@@ -82,8 +48,10 @@ const content = ref('欢迎来到我的博客')
     flex-direction: column;
   }
   header {
+    position: relative;
     width: 100vw;
     height: 100vh;
+    color: #ffffff;
     background: url('../../assets/images/home-header-2560x1600.jpg') no-repeat center center / cover;
     .site-info {
       position: absolute;
@@ -98,6 +66,8 @@ const content = ref('欢迎来到我的博客')
         font-size: 5rem;
       }
       .auto {
+        height: 4rem;
+        line-height: 4rem;
         text-align: center;
         font-size: 4rem;
         span::after {
@@ -116,15 +86,21 @@ const content = ref('欢迎来到我的博客')
     }
     .site-scroll {
       position: absolute;
-      bottom: 3vh;
+      bottom: 6vh;
       left: 50%;
       transform: translate(-50%, 0);
+      animation: nextPage 2s infinite;
+      :deep(.site-scroll-icon) {
+        width: 3rem;
+        height: 3rem;
+      }
     }
   }
   main {
     width: 120rem;
     margin: 0 auto;
     padding: 4rem 1.5rem;
+    color: var(--color-text);
     background-color: transparent;
     display: flex;
     justify-content: space-between;
@@ -136,6 +112,17 @@ const content = ref('欢迎来到我的博客')
       background-color: var(--color-bg);
       width: 29%;
     }
+  }
+}
+@keyframes nextPage {
+  0% {
+    bottom: 6vh;
+  }
+  50% {
+    bottom: 3vh;
+  }
+  100% {
+    bottom: 6vh;
   }
 }
 </style>

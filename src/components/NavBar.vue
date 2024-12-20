@@ -4,11 +4,15 @@
   <nav class="nav-bar">
     <span class="blog-info"><a>Faith's Blog</a></span>
     <div class="menus">
-      <div class="index-btn">
-        <span><a>首 页</a> </span>
-      </div>
       <div class="search-btn">
-        <span><a>搜 索</a> </span>
+        <span>
+          <a>搜 索</a>
+        </span>
+      </div>
+      <div class="index-btn">
+        <span>
+          <a>首 页</a>
+        </span>
       </div>
       <div class="atrical-btn">
         <span> <a>分 类</a> </span>
@@ -33,6 +37,7 @@
   display: flex;
   padding: 0 3.6rem;
   justify-content: space-between;
+  z-index: 1;
   .blog-info {
     font-size: 2rem;
   }
@@ -45,6 +50,7 @@
     }
     span {
       width: 100%;
+      vertical-align: middle;
     }
     span::after {
       content: '';
@@ -56,12 +62,14 @@
       background: #007bff;
       animation: none;
     }
+    span:hover {
+      color: #007bff;
+    }
     span:hover::after {
       animation: progress-bar 1s ease-out forwards;
     }
   }
 }
-
 @keyframes progress-bar {
   0% {
     width: 0;
