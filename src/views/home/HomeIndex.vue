@@ -38,6 +38,7 @@ const typeContent = useTypewriter('欢迎来到我的博客').displayedText
 <style lang="scss" scoped>
 .container {
   width: 100vw;
+
   color: var(--color-text);
   background-color: var(--color-text-muted);
   .sidebar {
