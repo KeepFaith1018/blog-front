@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import IconDate from './icons/home/IconDate.vue'
-import IconTag from './icons/home/IconTag.vue'
-import IconView from './icons/home/IconView.vue'
+import IconDate from '@/components/icons/home/IconDate.vue'
+import IconTag from '@/components/icons/home/IconTag.vue'
+import IconView from '@/components/icons/home/IconView.vue'
 const props = defineProps(['isReverse'])
 </script>
 <template>
@@ -54,7 +54,7 @@ const props = defineProps(['isReverse'])
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
     }
   }
   .card-info {
@@ -90,7 +90,7 @@ const props = defineProps(['isReverse'])
   }
   &:hover {
     .card-img-container img {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 }
