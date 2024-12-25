@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import IconDate from './icons/home/IconDate.vue'
-import IconTag from './icons/home/IconTag.vue'
-import IconView from './icons/home/IconView.vue'
+import IconDate from '@/components/icons/home/IconDate.vue'
+import IconTag from '@/components/icons/home/IconTag.vue'
+import IconView from '@/components/icons/home/IconView.vue'
 const props = defineProps(['isReverse'])
 </script>
 <template>
   <div :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'">
     <div class="card-img-container">
       <a href="">
+        <!-- TODO: 图片懒加载 -->
         <img src="@/assets/images/text-img.jpg" alt="" />
       </a>
     </div>
@@ -28,9 +29,7 @@ const props = defineProps(['isReverse'])
         </span>
       </div>
       <div class="card-info-introduce">
-        <span
-          >测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍</span
-        >
+        测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍
       </div>
     </div>
   </div>
@@ -54,7 +53,7 @@ const props = defineProps(['isReverse'])
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
     }
   }
   .card-info {
@@ -87,10 +86,18 @@ const props = defineProps(['isReverse'])
     .card-info-data-content {
       font-size: 1.6rem;
     }
+    .card-info-introduce {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   &:hover {
     .card-img-container img {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 }
