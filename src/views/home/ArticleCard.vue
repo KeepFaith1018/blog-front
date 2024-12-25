@@ -8,6 +8,7 @@ const props = defineProps(['isReverse'])
   <div :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'">
     <div class="card-img-container">
       <a href="">
+        <!-- TODO: 图片懒加载 -->
         <img src="@/assets/images/text-img.jpg" alt="" />
       </a>
     </div>
@@ -28,9 +29,7 @@ const props = defineProps(['isReverse'])
         </span>
       </div>
       <div class="card-info-introduce">
-        <span
-          >测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍</span
-        >
+        测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍测试文章内容，这里这里展示的是文章的介绍。测试文章内容，这里这里展示的是文章的介绍
       </div>
     </div>
   </div>
@@ -86,6 +85,14 @@ const props = defineProps(['isReverse'])
 
     .card-info-data-content {
       font-size: 1.6rem;
+    }
+    .card-info-introduce {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   &:hover {

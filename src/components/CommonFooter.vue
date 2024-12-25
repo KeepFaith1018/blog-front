@@ -17,7 +17,6 @@ footer {
   align-items: center;
   font-size: 1.5rem;
   .copyright {
-    background-color: #00c4b6;
     margin-bottom: 0.5rem;
   }
 }

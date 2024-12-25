@@ -26,6 +26,7 @@ header {
   width: 100vw;
   height: 100vh;
   color: #ffffff;
+  // TODO: 图片压缩
   background: url('../../assets/images/home-header-2560x1600.jpg') no-repeat center center / cover;
   .site-info {
     position: absolute;
