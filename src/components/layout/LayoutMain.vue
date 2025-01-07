@@ -1,31 +1,29 @@
-<script setup lang="ts">
-import ArticleCard from './ArticleCard.vue'
-import SiderBarIndex from './sidebar/SidebarIndex.vue'
-</script>
+<script setup lang="ts"></script>
 <template>
   <main>
     <div class="left-aside">
-      <ArticleCard v-for="i in 10" :key="i" :isReverse="i % 2 == 0 ? true : false"></ArticleCard>
+      <slot name="left-aside"></slot>
     </div>
     <div class="right-aside">
-      <SiderBarIndex />
+      <slot name="right-aside"></slot>
     </div>
   </main>
 </template>
 <style scoped lang="scss">
 main {
+  position: relative;
   width: 120rem;
   margin: 0 auto;
   padding: 4rem 1.5rem;
   color: var(--color-text);
-  background-color: transparent;
   display: flex;
   justify-content: space-between;
   .left-aside {
-    width: 70%;
+    width: 85rem;
   }
   .right-aside {
-    width: 28%;
+    margin-left: 2rem;
+    width: 33rem;
   }
 }
 </style>

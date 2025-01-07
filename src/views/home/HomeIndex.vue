@@ -1,21 +1,30 @@
 <script setup lang="ts">
+import LayoutMain from '@/components/layout/LayoutMain.vue'
 import HomeHeader from './HomeHeader.vue'
-import HomeMain from './HomeMain.vue'
-import CommonFooter from '@/components/CommonFooter.vue'
+import ArticleCard from './ArticleCard.vue'
+import LayoutFooter from '@/components/layout/LayoutFooter.vue'
 import SideBar from '@/components/SideBar.vue'
-import { useConfigStore } from '@/stores'
-const configStore = useConfigStore()
+import SidebarIndex from './sidebar/SidebarIndex.vue'
 </script>
 <template>
-  <div class="container" :data-theme="configStore.theme">
+  <div class="home-container">
     <SideBar></SideBar>
     <HomeHeader></HomeHeader>
-    <HomeMain></HomeMain>
-    <CommonFooter></CommonFooter>
+    <LayoutMain>
+      <template v-slot:left-aside>
+        <ArticleCard v-for="i in 10" :key="i" :isReverse="i % 2 == 0 ? true : false"></ArticleCard>
+      </template>
+      <template v-slot:right-aside>
+        <SidebarIndex></SidebarIndex>
+      </template>
+    </LayoutMain>
+    <LayoutFooter
+      backgroundImage="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+    ></LayoutFooter>
   </div>
 </template>
 <style lang="scss" scoped>
-.container {
+.home-container {
   position: relative;
   width: 100vw;
   color: var(--color-text);

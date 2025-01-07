@@ -46,8 +46,8 @@ onUnmounted(() => {
           {{ configStore.theme == 'light' ? '明' : '暗' }}
         </div>
         <!-- 回到顶部 -->
-        <div class="btu-common progress" @click="scrollToTop">{{ scrollProgress.toFixed(0) }}</div>
-        <div class="btu-common">
+        <div class="btu-common progress">{{ scrollProgress.toFixed(0) }}</div>
+        <div class="btu-common" @click="scrollToTop">
           <IconToTop class="icon-to-top" />
         </div>
       </div>

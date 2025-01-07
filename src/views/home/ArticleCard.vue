@@ -2,18 +2,23 @@
 import IconDate from '@/components/icons/home/IconDate.vue'
 import IconTag from '@/components/icons/home/IconTag.vue'
 import IconView from '@/components/icons/home/IconView.vue'
+import { useRouter } from 'vue-router'
 const props = defineProps(['isReverse'])
+const router = useRouter()
+const goToArticleInfo = () => {
+  router.push('/article/1')
+}
 </script>
 <template>
   <div :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'">
     <div class="card-img-container">
-      <a href="">
+      <a>
         <!-- TODO: 图片懒加载 -->
         <img src="@/assets/images/text-img.jpg" alt="" />
       </a>
     </div>
     <div class="card-info">
-      <h3 class="card-info-title">测试文章标题</h3>
+      <h3 class="card-info-title" @click="goToArticleInfo">测试文章标题</h3>
       <div class="card-info-data">
         <!-- 文章数据 -->
         <span class="card-info-data-date">
@@ -66,6 +71,10 @@ const props = defineProps(['isReverse'])
     padding: 0 4rem;
     .card-info-title {
       font-size: 2rem;
+      cursor: pointer;
+    }
+    .card-info-title:hover {
+      color: #17a2b8;
     }
     .card-info-data {
       height: 3rem;
