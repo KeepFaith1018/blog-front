@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+</script>
 
 <template>
   <nav class="nav-bar">
@@ -10,7 +13,7 @@
         </span>
       </div>
       <div class="index-btn">
-        <span>
+        <span @click="router.push('/')">
           <a>首 页</a>
         </span>
       </div>
@@ -29,7 +32,7 @@
   width: 100vw;
   height: 6rem;
   // TODO: 更改为模式切换
-  background-color: rgba(18, 18, 18.8);
+  background-color: transparent;
   line-height: 6rem;
   position: fixed;
   top: 0;
