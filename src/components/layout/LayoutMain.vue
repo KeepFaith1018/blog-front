@@ -9,7 +9,7 @@
     </div>
   </main>
 </template>
-<style scoped lang="scss">
+<style lang="scss">
 main {
   position: relative;
   width: 120rem;
@@ -24,6 +24,20 @@ main {
   .right-aside {
     margin-left: 2rem;
     width: 33rem;
+  }
+  @media screen and (max-width: 1260px) {
+    & {
+      width: 100%;
+      flex-direction: column;
+    }
+    .left-aside {
+      width: 100%;
+    }
+    .right-aside {
+      margin-left: 0;
+      margin-top: 2rem;
+      width: 100%;
+    }
   }
 }
 </style>

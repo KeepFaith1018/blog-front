@@ -61,6 +61,7 @@ const goToArticleInfo = () => {
       transition: transform 0.5s ease;
     }
   }
+
   .card-info {
     width: 60%;
     height: 100%;
@@ -104,6 +105,18 @@ const goToArticleInfo = () => {
       text-overflow: ellipsis;
     }
   }
+  @media screen and (max-width: 768px) {
+    & {
+      height: 40rem;
+      flex-direction: column;
+    }
+    .card-img-container {
+      width: 100%;
+    }
+    .card-info {
+      width: 100%;
+    }
+  }
   &:hover {
     .card-img-container img {
       transform: scale(1.1);
@@ -112,6 +125,11 @@ const goToArticleInfo = () => {
 }
 .row-reverse {
   flex-direction: row-reverse;
+}
+@media screen and (max-width: 768px) {
+  .row-reverse {
+    flex-direction: column;
+  }
 }
 :deep(.card-info-data-icon) {
   height: 2rem;

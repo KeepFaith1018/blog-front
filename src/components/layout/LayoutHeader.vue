@@ -57,7 +57,11 @@ const isPostInfo = ref(true)
   color: var(--color-text);
   background-color: var(--color-text-muted);
   .post-info-container {
+    padding: 0 2rem;
     width: 120rem;
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -67,6 +71,7 @@ const isPostInfo = ref(true)
       font-size: 3.5rem;
       height: 5rem;
     }
+
     .icon-common {
       color: #fff;
       width: 1.4rem;

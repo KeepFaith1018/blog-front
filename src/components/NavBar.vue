@@ -41,6 +41,7 @@ const router = useRouter()
   padding: 0 3.6rem;
   justify-content: space-between;
   z-index: 1;
+  background-color: #2c2c2c;
   .blog-info {
     font-size: 2rem;
   }

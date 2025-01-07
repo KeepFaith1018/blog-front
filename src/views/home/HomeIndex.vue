@@ -29,5 +29,8 @@ import SidebarIndex from './sidebar/SidebarIndex.vue'
   width: 100vw;
   color: var(--color-text);
   background-color: var(--color-text-muted);
+  .layout-main {
+    width: 100%;
+  }
 }
 </style>
