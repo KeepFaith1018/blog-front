@@ -10,7 +10,10 @@ const goToArticleInfo = () => {
 }
 </script>
 <template>
-  <div :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'">
+  <div
+    :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'"
+    @click="goToArticleInfo"
+  >
     <div class="card-img-container">
       <a>
         <!-- TODO: 图片懒加载 -->
@@ -18,7 +21,7 @@ const goToArticleInfo = () => {
       </a>
     </div>
     <div class="card-info">
-      <h3 class="card-info-title" @click="goToArticleInfo">测试文章标题</h3>
+      <h3 class="card-info-title">测试文章标题</h3>
       <div class="card-info-data">
         <!-- 文章数据 -->
         <span class="card-info-data-date">

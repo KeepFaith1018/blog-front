@@ -5,6 +5,13 @@ import LayoutMain from '@/components/layout/LayoutMain.vue'
 import SideBar from '@/components/SideBar.vue'
 import ArticleMainLeft from '@/views/article/ArticleMainLeft.vue'
 import ArticleMainRight from '@/views/article/ArticleMainRight.vue'
+import type { Tokens } from 'marked'
+import { ref } from 'vue'
+// 中转标题信息
+const headingList = ref<Array<Tokens.Heading>>([])
+const handValue = (data: Array<Tokens.Heading>) => {
+  headingList.value = data
+}
 </script>
 <template>
   <div class="card-container">
@@ -13,10 +20,10 @@ import ArticleMainRight from '@/views/article/ArticleMainRight.vue'
     </LayoutHeader>
     <LayoutMain>
       <template v-slot:left-aside>
-        <ArticleMainLeft></ArticleMainLeft>
+        <ArticleMainLeft @send-value="handValue"></ArticleMainLeft>
       </template>
       <template v-slot:right-aside>
-        <ArticleMainRight></ArticleMainRight>
+        <ArticleMainRight :heading-list="headingList"></ArticleMainRight>
       </template>
     </LayoutMain>
     <LayoutFooter

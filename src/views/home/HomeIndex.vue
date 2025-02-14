@@ -3,8 +3,8 @@ import LayoutMain from '@/components/layout/LayoutMain.vue'
 import HomeHeader from './HomeHeader.vue'
 import ArticleCard from './ArticleCard.vue'
 import LayoutFooter from '@/components/layout/LayoutFooter.vue'
+import SidebarIndex from '@/components/rightbar/SidebarIndex.vue'
 import SideBar from '@/components/SideBar.vue'
-import SidebarIndex from './sidebar/SidebarIndex.vue'
 </script>
 <template>
   <div class="home-container">

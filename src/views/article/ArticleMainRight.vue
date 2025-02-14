@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import IconAnalytics from '@/components/icons/home/IconAnalytics.vue'
+import { type Tokens } from 'marked'
+import { useRouter } from 'vue-router'
+const props = defineProps({
+  headingList: Array<Tokens.Heading>,
+})
+const router = useRouter()
+
+const scrollTo = (hash: string) => {
+  router.push({ hash: hash })
+}
 </script>
 <template>
   <div class="container">
@@ -7,11 +17,8 @@ import IconAnalytics from '@/components/icons/home/IconAnalytics.vue'
       <IconAnalytics class="icon-analytics" />
       文章结构
     </h2>
-    <div class="item">
-      <div>建议的 Git 分支策略和流程</div>
-    </div>
-    <div class="item">
-      <div>持续集成（可选）</div>
+    <div class="item" v-for="(item, index) in props.headingList" :key="item.text">
+      <div @click="scrollTo(`#heading-${index}`)">{{ item.text }}</div>
     </div>
   </div>
 </template>

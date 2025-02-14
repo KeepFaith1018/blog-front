@@ -1,11 +1,26 @@
 <script setup lang="ts">
+import { useScrollPosition } from '@/composables/useScrollPosition'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+const showNavbar = ref(false)
+const { position } = useScrollPosition()
+watch(position, (newValue, oldValue) => {
+  if (newValue === 0) {
+    showNavbar.value = false
+    return
+  }
+  if (newValue < oldValue) {
+    showNavbar.value = true
+  } else {
+    showNavbar.value = false
+  }
+})
 </script>
 
 <template>
-  <nav class="nav-bar">
-    <span class="blog-info"><a>Faith's Blog</a></span>
+  <nav :class="['nav-bar', { fixed: showNavbar }]">
+    <span class="blog-info" @click="router.push('/')"><a>Faith's Blog</a></span>
     <div class="menus">
       <div class="search-btn">
         <span>
@@ -31,20 +46,28 @@ const router = useRouter()
 .nav-bar {
   width: 100vw;
   height: 6rem;
-  // TODO: 更改为模式切换
   background-color: transparent;
   line-height: 6rem;
-  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   padding: 0 3.6rem;
   justify-content: space-between;
   z-index: 1;
-  background-color: #2c2c2c;
+  background-color: rgb(44, 44, 44);
+  transition: top 0.3s ease-in-out; /* 平滑过渡 */
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(44, 44, 44, 0.4);
+  }
+
   .blog-info {
     font-size: 2rem;
   }
+
   .menus {
     display: flex;
     font-size: 1.5rem;
@@ -74,6 +97,7 @@ const router = useRouter()
     }
   }
 }
+
 @keyframes progress-bar {
   0% {
     width: 0;

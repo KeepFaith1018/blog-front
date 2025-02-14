@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { marked } from 'marked'
-const content = marked(
-  `
+import { marked, type Tokens } from 'marked'
+import { onMounted, ref } from 'vue'
+const emit = defineEmits(['sendValue'])
+const headingList = ref<Array<Tokens.Heading>>([])
+const str = ref(`
 # 独立开发中的 Git 流程模拟
 
+
 如果你想在独立开发时模拟企业中的 Git 流程，可以按照以下步骤创建一个精简版的 Git Flow，帮助管理项目进度并体验真实项目中的 Git 流程。如果你想在独立开发时模拟企业中的 Git 流程，可以按照以下步骤创建一个精简版的 Git Flow，帮助管理项目进度并体验真实项目中的 Git 流程。
-![Vue Logo](https://images.unsplash.com/photo-1498050108023-c5249f4df085 "Vue.js Logo")
----
+
 
 ## 建议的 Git 分支策略和流程
 
@@ -96,9 +98,24 @@ git merge hotfix/urgent-fix
 - 如果想体验更真实的企业流程，可以配置 CI 工具（如 GitHub Actions），在每次提交或合并时自动执行测试脚本，确保代码质量。
 
 通过这种方式，即使独立开发，也可以模拟真实项目中的 Git 流程，帮助更好地管理代码、提升开发效率。
-`,
-)
-console.log(content)
+`)
+let headingIndex = 0
+marked.use({
+  renderer: {
+    heading(token) {
+      headingList.value.push(token)
+      return `<h${token.depth} id=${'heading-' + headingIndex++}>${token.text}</h${token.depth}>`
+    },
+  },
+})
+
+const content = ref<string>('')
+onMounted(async () => {
+  content.value = await marked(str.value)
+  console.log(headingList)
+
+  emit('sendValue', headingList.value)
+})
 </script>
 <template>
   <div class="container">
@@ -113,6 +130,9 @@ console.log(content)
   .content {
     padding: 2rem;
     line-height: 2;
+    p {
+      font-size: 20px;
+    }
   }
 }
 </style>
