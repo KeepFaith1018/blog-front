@@ -17,7 +17,7 @@ const goToArticleInfo = () => {
     <div class="card-img-container">
       <a>
         <!-- TODO: 图片懒加载 -->
-        <img src="@/assets/images/text-img.jpg" alt="" />
+        <img v-lazy="'https://images.unsplash.com/photo-1498050108023-c5249f4df085'" alt="" />
       </a>
     </div>
     <div class="card-info">

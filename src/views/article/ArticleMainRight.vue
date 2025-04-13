@@ -51,5 +51,9 @@ const scrollTo = (hash: string) => {
     margin: 0 auto;
     font-size: 1.4rem;
   }
+  .item:hover {
+    cursor: pointer;
+    background-color: var(--color-text-muted);
+  }
 }
 </style>
