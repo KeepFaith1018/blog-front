@@ -2,14 +2,22 @@
 import IconDate from '@/components/icons/home/IconDate.vue'
 import IconTag from '@/components/icons/home/IconTag.vue'
 import IconView from '@/components/icons/home/IconView.vue'
+import { useRouter } from 'vue-router'
 const props = defineProps(['isReverse'])
+const router = useRouter()
+const goToArticleInfo = () => {
+  router.push('/article/1')
+}
 </script>
 <template>
-  <div :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'">
+  <div
+    :class="props.isReverse ? 'card-container row-reverse ' : 'card-container'"
+    @click="goToArticleInfo"
+  >
     <div class="card-img-container">
-      <a href="">
+      <a>
         <!-- TODO: 图片懒加载 -->
-        <img src="@/assets/images/text-img.jpg" alt="" />
+        <img v-lazy="'https://images.unsplash.com/photo-1498050108023-c5249f4df085'" alt="" />
       </a>
     </div>
     <div class="card-info">
@@ -56,6 +64,7 @@ const props = defineProps(['isReverse'])
       transition: transform 0.5s ease;
     }
   }
+
   .card-info {
     width: 60%;
     height: 100%;
@@ -66,6 +75,10 @@ const props = defineProps(['isReverse'])
     padding: 0 4rem;
     .card-info-title {
       font-size: 2rem;
+      cursor: pointer;
+    }
+    .card-info-title:hover {
+      color: #17a2b8;
     }
     .card-info-data {
       height: 3rem;
@@ -95,6 +108,18 @@ const props = defineProps(['isReverse'])
       text-overflow: ellipsis;
     }
   }
+  @media screen and (max-width: 768px) {
+    & {
+      height: 40rem;
+      flex-direction: column;
+    }
+    .card-img-container {
+      width: 100%;
+    }
+    .card-info {
+      width: 100%;
+    }
+  }
   &:hover {
     .card-img-container img {
       transform: scale(1.1);
@@ -103,6 +128,11 @@ const props = defineProps(['isReverse'])
 }
 .row-reverse {
   flex-direction: row-reverse;
+}
+@media screen and (max-width: 768px) {
+  .row-reverse {
+    flex-direction: column;
+  }
 }
 :deep(.card-info-data-icon) {
   height: 2rem;
